@@ -236,8 +236,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       margin: 0;
       overflow: hidden;
       z-index: 10;
@@ -293,6 +293,7 @@
       outline: none;
       box-shadow: none;
       z-index: 12;
+      transform-origin: center;
     }
 
     .entity img {
@@ -575,7 +576,7 @@
   
   <div id="startScreen">
     <h2>🔍 Explore a Cadeia Alimentar!</h2>
-    <p>Você irá começar como uma minhoca e evoluirá ao sobreviver.</p>
+    <p>Você irá começar como uma lagarta e evoluirá ao sobreviver.</p>
     <p>Cada fase mostra seu nível trófico e o tipo de consumidor você é.</p>
     <button id="startButton">Começar</button>
   </div>
@@ -590,7 +591,7 @@
     <div id="foreground-overlay"></div>
   </div>
   <div id="ui" class="hidden">
-    <div id="status">Você é uma minhoca. Coma 3 folhas antes do sapo te pegar!</div>
+    <div id="status">Você é uma lagarta. Coma 3 folhas antes do sapo te pegar!</div>
   </div>
   <div id="gameOver" class="hidden">
     <h2>☠ Game Over!</h2>
@@ -641,65 +642,50 @@
     scrollbar-color: #555 #222;
   ">
     <h2 style="margin-bottom: 20px; font-size: 24px;">Créditos</h2>
-    <p style="margin: 12px 0;">
-      2025–2026, Franciele Silva Melo & Rayla Lima.<br>
-      Todos os direitos reservados.
-    </p>
-    <p style="margin: 12px 0;">
-      Cadeia Viva: Evolução na Natureza é um projeto autoral<br>
-      desenvolvido no Brasil.
-    </p>
-    <p style="margin: 12px 0; font-weight: bold;">Desenvolvimento</p>
-    <p style="margin: 12px 0;">
-      Programação · Código · Game Design · Implementação · Interface<br>
-      <strong>Franciele Silva Melo</strong>
-    </p>
-    <p style="margin: 12px 0; font-weight: bold;">Suporte Criativo</p>
-    <p style="margin: 12px 0;">
-      <strong>Rayla Lima</strong>
-    </p>
-    <p style="margin: 12px 0; font-weight: bold;">Arte e Imagens</p>
-    <p style="margin: 12px 0;">
-      Imagens geradas por Inteligência Artificial (IA)<br>
-      Criação, edição e adaptação:<br>
-      <strong>Franciele Silva Melo<br>Rayla Lima</strong>
-    </p>
-    <p style="margin: 12px 0; font-weight: bold;">Música e Áudio</p>
-    <p style="margin: 12px 0;">
-      Músicas e efeitos sonoros obtidos do Pixabay
-    </p>
-    <p style="margin: 12px 0; font-weight: bold;">Finalidade Educacional</p>
-    <p style="margin: 12px 0;">
-      Este jogo foi desenvolvido com fins educacionais.
-    </p>
-    <p style="margin: 12px 0; font-weight: bold;">Informações da Versão</p>
-    <p style="margin: 12px 0;">
-      Versão BETA<br>
-      Desenvolvido entre 2025 e 2026<br>
-      Pode conter bugs ou sofrer alterações futuras
-    </p>
-    <p style="margin: 12px 0; font-style: italic;">
-      Qualquer semelhança com outros projetos, jogos ou obras<br>
-      é mera coincidência.
-    </p>
-    <button id="closeCreditsButton" style="
-      margin-top: 25px;
-      background: #2196F3;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background 0.2s;
-    ">Fechar</button>
+<p style="margin: 12px 0;">Projeto desenvolvido por alunas da Universidade Federal do Maranhão (UFMA)</p>
+<p style="margin: 12px 0;">na disciplina de Instrumentação para o Ensino de Ciências Naturais – Química</p>
+<p style="margin: 12px 0;">2025–2026</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0;">Franciele Silva Melo &amp; Rayla Lima</p>
+<p style="margin: 12px 0;">Todos os direitos reservados.</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0;">Cadeia Viva: Evolução na Natureza</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0; font-weight: bold;">Desenvolvimento</p>
+<p style="margin: 12px 0;">Programação · Código · Game Design · Implementação · Interface</p>
+<p style="margin: 12px 0;">Franciele Silva Melo</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0; font-weight: bold;">Suporte Criativo</p>
+<p style="margin: 12px 0;">Rayla Lima</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0; font-weight: bold;">Imagens geradas por Inteligência Artificial (IA)</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0; font-weight: bold;">Música e Áudio</p>
+<p style="margin: 12px 0;">Músicas e efeitos sonoros obtidos do Pixabay</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0; font-weight: bold;">Este jogo foi desenvolvido exclusivamente com fins educacionais.</p>
+<p style="margin: 12px 0;">&nbsp;</p>
+<p style="margin: 12px 0; font-weight: bold;">Informações da Versão</p>
+<p style="margin: 12px 0;">Versão BETA<br>Desenvolvido entre 2025 e 2026<br>Pode conter bugs ou sofrer alterações futuras</p>
+<p style="margin: 12px 0; font-style: italic;">Qualquer semelhança com outros projetos, jogos ou obras<br>é mera coincidência.</p>
+<button id="closeCreditsButton" style="
+margin-top: 25px;
+background: #2196F3;
+color: white;
+border: none;
+border-radius: 8px;
+padding: 10px 20px;
+font-size: 16px;
+cursor: pointer;
+transition: background 0.2s;
+">Fechar</button>
   </div>
 </div>
 
   <!-- ✅ PAINÉIS DE CONFIGURAÇÃO (FORA DE QUALQUER OUTRO ELEMENTO) -->
 <div id="configMenu" class="modal hidden" style="background: rgba(0,0,0,0.85); flex-direction: column; align-items: center; justify-content: center;">
   <h2 style="margin-bottom: 30px; font-size: 28px; color: white;">Configurações</h2>
-  <button id="audioConfigBtn" class="btn-azul" style="margin: 10px; padding: 12px 24px;">Configuração</button>
+  <button id="audioConfigBtn" class="btn-azul" style="margin: 10px; padding: 12px 24px;">Áudio</button>
   <button id="creditsFromConfigBtn" class="btn-azul" style="margin: 10px; padding: 12px 24px;">Créditos</button>
   <button id="closeConfigMenu" style="margin-top: 30px; background: #666; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Voltar</button>
 </div>
@@ -917,25 +903,25 @@ if (isMobile()) {
     }
     
     const chain1 = [
-      { playerEmoji: '🐛', predatorEmoji: '🐸', foodEmoji: '🍃', foodCount: 3, playerSpeed: 8, predatorSpeed: 1.5, status: 'Você é uma minhoca (consumidor primário - nível trófico 2). Coma 3 folhas antes do sapo te pegar!', theme: 'worm', foodType: 'leaf' },
-      { playerEmoji: '🐸', predatorEmoji: '🐍', foodEmoji: '🐛', foodCount: 3, playerSpeed: 9, predatorSpeed: 1.8, status: 'Você é um sapo (consumidor secundário - nível trófico 3). Caçe 3 minhocas antes da cobra te pegar!', theme: 'frog', foodType: 'worm' },
+      { playerEmoji: '🐛', predatorEmoji: '🐸', foodEmoji: '🍃', foodCount: 3, playerSpeed: 8, predatorSpeed: 1.5, status: 'Você é uma lagarta (consumidor primário - nível trófico 2). Coma 3 folhas antes do sapo te pegar!', theme: 'worm', foodType: 'leaf' },
+      { playerEmoji: '🐸', predatorEmoji: '🐍', foodEmoji: '🐛', foodCount: 3, playerSpeed: 9, predatorSpeed: 1.8, status: 'Você é um sapo (consumidor secundário - nível trófico 3). Caçe 3 lagartas antes da cobra te pegar!', theme: 'frog', foodType: 'worm' },
       { playerEmoji: '🐍', predatorEmoji: '🦅', foodEmoji: '🐸', foodCount: 3, playerSpeed: 10, predatorSpeed: 2.0, status: 'Você é uma cobra (consumidor terciário - nível trófico 4). Caçe 3 sapos entre as folhas úmidas da mata ciliar!', theme: 'riparian', foodType: 'frog' },
       { playerEmoji: '🦅', predatorEmoji: '👨‍🦯', foodEmoji: '🐍', foodCount: 3, playerSpeed: 11, predatorSpeed: 3.0, status: 'Você é um gavião. Sobrevoe a mata ciliar e caçe cobras!', theme: 'riparian', foodType: 'snake' }
     ];
 
     // === CADEIA AQUÁTICA REVISADA ===
     const chain2 = [
-      { playerEmoji: '🪱', predatorEmoji: '🐠', foodEmoji: '🦠', foodCount: 3, playerSpeed: 5, predatorSpeed: 1.5, status: 'Parabéns! Você está na cadeia alimentar aquática.\nVocê é um zooplâncton (consumidor primário - nível trófico 2). Coma 3 bactérias antes do peixe te pegar!', theme: 'aquatic', foodType: 'bacteria' },
-      { playerEmoji: '🐠', predatorEmoji: '🦭', foodEmoji: '🪱', foodCount: 3, playerSpeed: 7, predatorSpeed: 2.0, status: 'Você é um peixe pequeno (consumidor secundário - nível trófico 3). Coma 3 zooplânctons antes da foca te pegar!', theme: 'aquatic', foodType: 'zooplankton' },
-      { playerEmoji: '🦭', predatorEmoji: '🦈', foodEmoji: '🐠', foodCount: 3, playerSpeed: 8, predatorSpeed: 3.0, status: 'Você é uma foca (consumidor terciário - nível trófico 4). Caçe 3 peixes antes do tubarão te pegar!', theme: 'aquatic', foodType: 'fish' },
+      { playerEmoji: '🪱', predatorEmoji: '🐠', foodEmoji: '🦠', foodCount: 3, playerSpeed: 5, predatorSpeed: 1.5, status: 'Parabéns! Você está na cadeia alimentar aquática.\nVocê é um zooplâncton (consumidor primário - nível trófico 2). Coma 3 fitoplânctons antes da sardinha te pegar!', theme: 'aquatic', foodType: 'fitoplâncton' },
+      { playerEmoji: '🐠', predatorEmoji: '🦭', foodEmoji: '🪱', foodCount: 3, playerSpeed: 7, predatorSpeed: 2.0, status: 'Você é uma sardinha (consumidor secundário - nível trófico 3). Coma 3 zooplânctons antes da foca te pegar!', theme: 'aquatic', foodType: 'zooplankton' },
+      { playerEmoji: '🦭', predatorEmoji: '🦈', foodEmoji: '🐠', foodCount: 3, playerSpeed: 8, predatorSpeed: 3.0, status: 'Você é uma foca (consumidor terciário - nível trófico 4). Caçe 3 sardinhas antes do tubarão te pegar!', theme: 'aquatic', foodType: 'fish' },
     ];
 
     let currentChain = 1;
     let currentPhase = 0;
     let completedLevels = [];
     let proximaFaseEhAquatica = false;
-    let player = { x: 450, y: 500 };
-    let predator = { x: 100, y: 100, patrolDirection: { dx: 0, dy: 0 }, patrolTimer: 0 };
+    let player = { x: 450, y: 500, facing: 'right' };
+    let predator = { x: 100, y: 100, facing: 'right', patrolDirection: { dx: 0, dy: 0 }, patrolTimer: 0 };
     let foods = [];
     let collectedCount = 0;
     let gameOver = false;
@@ -1212,7 +1198,7 @@ if (isMobile()) {
       const maxY = rect.height - 25;
 
       // Tipos que NÃO se movem
-      const staticFoodTypes = ['leaf', 'bacteria']; // ← planta e fitoplâncton
+      const staticFoodTypes = ['leaf', 'fitoplâncton']; // ← planta e fitoplâncton
 
       foods.forEach((food, i) => {
         if (food.collected) return;
@@ -1225,6 +1211,10 @@ if (isMobile()) {
             food.dy = (Math.random() - 0.5) * 2;
           }
 
+          // Atualiza direção horizontal do alimento
+          if (food.dx < 0) food.facing = 'left';
+          else if (food.dx > 0) food.facing = 'right';
+         
           // Move com velocidade suave
           food.x += food.dx * 1.0;
           food.y += food.dy * 1.0;
@@ -1397,7 +1387,13 @@ if (isMobile()) {
         food.innerHTML = `<img src="assets/${foodSprite}.png" style="width:100%;height:100%;object-fit:contain;">`;
         gameArea.appendChild(food);
         foodEls.push(food);
-        foods.push({ ...randomPosition(), collected: false });
+        foods.push({
+          ...randomPosition(),
+          collected: false,
+          dx: 0,
+          dy: 0,
+          facing: 'right'
+        });
       }
 
       player.x = 450;
@@ -1466,18 +1462,23 @@ if (isMobile()) {
       // Centralização dinâmica (funciona com qualquer tamanho)
       playerEl.style.left = (player.x - playerEl.offsetWidth / 2) + 'px';
       playerEl.style.top = (player.y - playerEl.offsetHeight / 2) + 'px';
-
+      // Flip horizontal do jogador
+      playerEl.style.transform = player.facing === 'right' ? 'scaleX(-1)' : 'scaleX(1)';
+     
       if (predatorEl) {
         predatorEl.style.left = (predator.x - predatorEl.offsetWidth / 2) + 'px';
         predatorEl.style.top = (predator.y - predatorEl.offsetHeight / 2) + 'px';
+        // Flip horizontal do predador
+        predatorEl.style.transform = predator.facing === 'right' ? 'scaleX(-1)' : 'scaleX(1)';
       }
-
+      
       // Atualiza posição e visibilidade das comidas
       foodEls.forEach((el, i) => {
       if (!foods[i].collected) {
         el.style.left = (foods[i].x - 25) + 'px';
         el.style.top = (foods[i].y - 25) + 'px';
         el.style.display = 'flex';
+        el.style.transform = foods[i].facing === 'right' ? 'scaleX(-1)' : 'scaleX(1)';
       } else {
         el.style.display = 'none';
       }
@@ -1560,7 +1561,11 @@ if (isMobile()) {
 	    let newX = player.x + dx * speed;
 	    let newY = player.y + dy * speed;
 
-	    newX = Math.max(25, Math.min(maxX, newX));
+      // Atualiza direção horizontal do jogador
+      if (dx < 0) player.facing = 'left';
+      else if (dx > 0) player.facing = 'right';
+	    
+      newX = Math.max(25, Math.min(maxX, newX));
 	    newY = Math.max(25, Math.min(maxY, newY));
 
 	    if (!checkCollisionAt(newX, newY)) {
@@ -1643,30 +1648,48 @@ if (isMobile()) {
         predator.patrolTimer++;
         if (predator.patrolTimer > 120) {
           predator.patrolDirection = {
-            dx: (Math.random() - 0.5) * 2,
-            dy: (Math.random() - 0.5) * 2
+             dx: (Math.random() - 0.5) * 2,
+             dy: (Math.random() - 0.5) * 2
           };
           predator.patrolTimer = 0;
         }
         dx = predator.patrolDirection.dx * phase.predatorSpeed;
         dy = predator.patrolDirection.dy * phase.predatorSpeed;
       } else {
-        // === PERSEGUIÇÃO ===
+        // === PERSEGUIÇÃO INTELIGENTE COM EVITAÇÃO DE OBSTÁCULOS ===
         const toPlayerX = player.x - predator.x;
         const toPlayerY = player.y - predator.y;
         const dist = Math.sqrt(toPlayerX * toPlayerX + toPlayerY * toPlayerY);
+
         if (dist > 0) {
-          dx = (toPlayerX / dist) * phase.predatorSpeed;
-          dy = (toPlayerY / dist) * phase.predatorSpeed;
+          // Direção unitária em direção ao jogador
+          const unitDx = toPlayerX / dist;
+          const unitDy = toPlayerY / dist;
+
+          // Testa se o próximo passo (na direção do jogador) está livre
+          const nextX = predator.x + unitDx * phase.predatorSpeed;
+          const nextY = predator.y + unitDy * phase.predatorSpeed;
+
+          if (!isSolidAt(nextX, nextY)) {
+            // Caminho livre → segue normalmente
+            dx = unitDx * phase.predatorSpeed;
+            dy = unitDy * phase.predatorSpeed;
+          } else {
+            // Caminho bloqueado → recalcula direção alternativa
+            const result = findBestFreeDirection(unitDx * phase.predatorSpeed, unitDy * phase.predatorSpeed, phase.predatorSpeed);
+            dx = result.dx;
+            dy = result.dy;
+          }
         }
       }
 
-      // Encontra a melhor direção livre
-      const result = findBestFreeDirection(dx, dy, phase.predatorSpeed);
+      // Atualiza direção horizontal do predador
+      if (dx < 0) predator.facing = 'left';
+      else if (dx > 0) predator.facing = 'right';
 
       // Aplica o movimento
-      predator.x += result.dx;
-      predator.y += result.dy;
+      predator.x += dx;
+      predator.y += dy;
 
       // Limita aos limites da tela
       predator.x = Math.max(25, Math.min(maxX, predator.x));
@@ -2293,19 +2316,6 @@ function findFreeDirection(baseDx, baseDy, speed, attempts = 8) {
 
   // Se tudo falhar, retorna a direção original (mesmo que empurre contra a parede)
   return { dx: baseDx, dy: baseDy };
-}
-
-// === FUNÇÕES DE PATHFINDING SIMPLES ===
-
-function isSolidAt(x, y) {
-  const hitbox = { x: x - 20, y: y - 20, width: 40, height: 40 };
-  if (!window.decorObjects) return false;
-  for (const obj of window.decorObjects) {
-    if (obj.type === 'solid' && rectsOverlap(hitbox, obj)) {
-      return true;
-    }
-  }
-  return false;
 }
 
 // Gera ângulos próximos à direção alvo (±90°)
