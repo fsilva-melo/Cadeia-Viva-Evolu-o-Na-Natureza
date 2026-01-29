@@ -185,6 +185,21 @@
       box-shadow: 0 6px 14px rgba(33, 150, 243, 0.5);
     }
 
+    .scale-btn {
+  background: rgba(33, 150, 243, 0.6); /* Azul transparente */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: bold;
+}
+.scale-btn:hover {
+  background: rgba(33, 150, 243, 0.8);
+}
+
     /* === TELA "EXPLORE A CADEIA ALIMENTAR" SOBRE A CAPA === */
     #startScreen {
       position: absolute;
@@ -568,6 +583,20 @@
   <div id="coverScreen" class="capa">
   <img src="assets/placa_capa.png" alt="Cadeia Viva" class="placa" />
   <button id="coverStartButton" class="btn-jogar">Jogar</button>
+  <!-- Opções de escala (só aparecem em mobile) -->
+  <div id="mobileScaleOptions" style="
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    gap: 10px;
+    z-index: 99;
+  ">
+    <button class="scale-btn" data-scale="0.75">Pequena</button>
+    <button class="scale-btn" data-scale="0.85">Média</button>
+    <button class="scale-btn" data-scale="1.0">Grande</button>
+  </div>
 </div>
   <div id="startScreenBackground" class="hidden" style="
   position: fixed;
@@ -960,6 +989,8 @@ if (isMobile()) {
     let vidas = 2;
     let isPlayerHidden = false;
     window.decorObjects = [];
+    // Escala personalizada para mobile (padrão: 0.85 = média)
+    let customMobileScale = parseFloat(localStorage.getItem('mobileScale')) || 0.85;
     const VIDAS_INICIAIS = 2;
     const ENERGIA_BASE = 100;
     const REDUCAO_POR_FASE = 20;
@@ -1267,41 +1298,34 @@ if (isMobile()) {
       const gameArea = document.getElementById('gameArea');
       if (!gameArea) return;
 
-      // Mantém o comportamento original do desktop: 100% da viewport
-      gameArea.style.width = '100%';
-      gameArea.style.height = '100%';
-      gameArea.style.position = 'fixed';
-      gameArea.style.top = '0';
-      gameArea.style.left = '0';
-      gameArea.style.margin = '0';
-      gameArea.style.transform = 'none'; // reseta qualquer transformação
-
-      // Só aplica zoom out no MOBILE
-      if (isMobile()) {
-        const width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
-        const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-
-        // Proporção lógica do jogo (16:9)
-        const logicalWidth = 1920;
-        const logicalHeight = 1080;
-
-        // Calcula escala para caber na tela
-        let scale = Math.min(width / logicalWidth, height / logicalHeight);
-
-        // Zoom out extra: mostra mais cenário
-        scale *= 0.85;
-
-        // Aplica transformação de escala mantendo centralização
-        gameArea.style.transform = `scale(${scale})`;
-        gameArea.style.transformOrigin = 'top left';
-        gameArea.style.width = logicalWidth + 'px';
-        gameArea.style.height = logicalHeight + 'px';
-        gameArea.style.left = '50%';
-        gameArea.style.top = '50%';
-        gameArea.style.marginLeft = `-${(logicalWidth * scale) / 2}px`;
-        gameArea.style.marginTop = `-${(logicalHeight * scale) / 2}px`;
-        gameArea.style.position = 'absolute';
+      // Comportamento padrão para desktop
+      if (isDesktop()) {
+        gameArea.style.width = '100%';
+        gameArea.style.height = '100%';
+        gameArea.style.position = 'fixed';
+        gameArea.style.top = '0';
+        gameArea.style.left = '0';
+        gameArea.style.transform = 'none';
+        return;
       }
+
+      // === MOBILE: aplica escala personalizada ===
+      const width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+      const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+      const logicalWidth = 1920;
+      const logicalHeight = 1080;
+      const scale = customMobileScale; // ← usa a escala escolhida pelo usuário
+
+      gameArea.style.position = 'absolute';
+      gameArea.style.width = logicalWidth + 'px';
+      gameArea.style.height = logicalHeight + 'px';
+      gameArea.style.transform = `scale(${scale})`;
+      gameArea.style.transformOrigin = 'top left';
+      gameArea.style.left = '50%';
+      gameArea.style.top = '50%';
+      gameArea.style.marginLeft = `-${(logicalWidth * scale) / 2}px`;
+      gameArea.style.marginTop = `-${(logicalHeight * scale) / 2}px`;
     }
 
     // Escuta mudanças de viewport (rotação, zoom, teclado, etc.)
@@ -1892,7 +1916,21 @@ if (isMobile()) {
       // Atualiza vidas e carrega volumes salvos
       atualizarVidas();
       loadSavedVolumes();
+
+    if (isMobile()) {
+    document.getElementById('mobileScaleOptions').style.display = 'flex';
+    document.getElementById('coverStartButton').style.bottom = '80px';
+  }
+
+  document.querySelectorAll('.scale-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      playClickSound();
+      customMobileScale = parseFloat(btn.dataset.scale);
+      localStorage.setItem('mobileScale', customMobileScale.toString());
+      resizeGameArea();
     });
+  });
+});
 
     // === SISTEMA DE PERGUNTAS EDUCATIVAS (20 perguntas com 3 alternativas) ===
 const perguntas = [
