@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Cadeia Viva: Evolução na Natureza</title>
   <link rel="icon" href="data:,">
   <style>
@@ -547,6 +547,24 @@
   <audio id="backgroundMusic" src="music/musica_jogo.mp3" loop></audio>
   <audio id="menuMusic" src="music/musica_menu.mp3" loop></audio>
   <audio id="clickSound" src="music/click.mp3"></audio>
+  <!-- Aviso de rotação (aparece só em retrato no celular) -->
+<div id="rotateNotice" style="
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #111;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  z-index: 9999;
+  text-align: center;
+  padding: 20px;
+">
+  <p>📱 Por favor, gire seu dispositivo para o modo <strong>paisagem</strong>.</p>
+  <div style="margin-top: 20px; font-size: 60px;">🔄</div>
+</div>
   <div id="coverScreen" class="capa">
   <img src="assets/placa_capa.png" alt="Cadeia Viva" class="placa" />
   <button id="coverStartButton" class="btn-jogar">Jogar</button>
@@ -641,44 +659,53 @@
     scrollbar-width: thin;
     scrollbar-color: #555 #222;
   ">
+    <!-- Logo da UFMA -->
+    <img src="assets/logo.png" alt="Logo da UFMA" style="
+      width: auto;
+      height: 80px; /* ajustável conforme necessidade */
+      max-width: 100%;
+      object-fit: contain;
+      margin-bottom: 20px;
+    ">
+
     <h2 style="margin-bottom: 20px; font-size: 24px;">Créditos</h2>
-<p style="margin: 12px 0;">Projeto desenvolvido por alunas da Universidade Federal do Maranhão (UFMA)</p>
-<p style="margin: 12px 0;">na disciplina de Instrumentação para o Ensino de Ciências Naturais – Química</p>
-<p style="margin: 12px 0;">2025–2026</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0;">Franciele Silva Melo &amp; Rayla Lima</p>
-<p style="margin: 12px 0;">Todos os direitos reservados.</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0;">Cadeia Viva: Evolução na Natureza</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0; font-weight: bold;">Desenvolvimento</p>
-<p style="margin: 12px 0;">Programação · Código · Game Design · Implementação · Interface</p>
-<p style="margin: 12px 0;">Franciele Silva Melo</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0; font-weight: bold;">Suporte Criativo</p>
-<p style="margin: 12px 0;">Rayla Lima</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0; font-weight: bold;">Imagens geradas por Inteligência Artificial (IA)</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0; font-weight: bold;">Música e Áudio</p>
-<p style="margin: 12px 0;">Músicas e efeitos sonoros obtidos do Pixabay</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0; font-weight: bold;">Este jogo foi desenvolvido exclusivamente com fins educacionais.</p>
-<p style="margin: 12px 0;">&nbsp;</p>
-<p style="margin: 12px 0; font-weight: bold;">Informações da Versão</p>
-<p style="margin: 12px 0;">Versão BETA<br>Desenvolvido entre 2025 e 2026<br>Pode conter bugs ou sofrer alterações futuras</p>
-<p style="margin: 12px 0; font-style: italic;">Qualquer semelhança com outros projetos, jogos ou obras<br>é mera coincidência.</p>
-<button id="closeCreditsButton" style="
-margin-top: 25px;
-background: #2196F3;
-color: white;
-border: none;
-border-radius: 8px;
-padding: 10px 20px;
-font-size: 16px;
-cursor: pointer;
-transition: background 0.2s;
-">Fechar</button>
+    <p style="margin: 12px 0;">Projeto desenvolvido por alunas da Universidade Federal do Maranhão (UFMA)</p>
+    <p style="margin: 12px 0;">na disciplina de Instrumentação para o Ensino de Ciências Naturais – Química</p>
+    <p style="margin: 12px 0;">2025–2026</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0;">Franciele Silva Melo &amp; Rayla Lima</p>
+    <p style="margin: 12px 0;">Todos os direitos reservados.</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0;">Cadeia Viva: Evolução na Natureza</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0; font-weight: bold;">Desenvolvimento</p>
+    <p style="margin: 12px 0;">Programação · Código · Game Design · Implementação · Interface</p>
+    <p style="margin: 12px 0;">Franciele Silva Melo</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0; font-weight: bold;">Suporte Criativo</p>
+    <p style="margin: 12px 0;">Rayla Lima</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0; font-weight: bold;">Imagens geradas por Inteligência Artificial (IA)</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0; font-weight: bold;">Música e Áudio</p>
+    <p style="margin: 12px 0;">Músicas e efeitos sonoros obtidos do Pixabay</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0; font-weight: bold;">Este jogo foi desenvolvido exclusivamente com fins educacionais.</p>
+    <p style="margin: 12px 0;">&nbsp;</p>
+    <p style="margin: 12px 0; font-weight: bold;">Informações da Versão</p>
+    <p style="margin: 12px 0;">Versão BETA<br>Desenvolvido entre 2025 e 2026<br>Pode conter bugs ou sofrer alterações futuras</p>
+    <p style="margin: 12px 0; font-style: italic;">Qualquer semelhança com outros projetos, jogos ou obras<br>é mera coincidência.</p>
+    <button id="closeCreditsButton" style="
+      margin-top: 25px;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    ">Fechar</button>
   </div>
 </div>
 
@@ -1240,29 +1267,41 @@ if (isMobile()) {
       const gameArea = document.getElementById('gameArea');
       if (!gameArea) return;
 
-      // Usa visualViewport se disponível (mobile moderno)
-      const width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
-      const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      // Mantém o comportamento original do desktop: 100% da viewport
+      gameArea.style.width = '100%';
+      gameArea.style.height = '100%';
+      gameArea.style.position = 'fixed';
+      gameArea.style.top = '0';
+      gameArea.style.left = '0';
+      gameArea.style.margin = '0';
+      gameArea.style.transform = 'none'; // reseta qualquer transformação
 
-      // Ajusta tamanho do canvas lógico mantendo proporção 16:9 (ou sua preferência)
-      const aspectRatio = 16 / 9;
-      let logicalWidth, logicalHeight;
+      // Só aplica zoom out no MOBILE
+      if (isMobile()) {
+        const width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+        const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
 
-      if (width / height > aspectRatio) {
-        logicalHeight = height;
-        logicalWidth = height * aspectRatio;
-      } else {
-        logicalWidth = width;
-        logicalHeight = width / aspectRatio;
+        // Proporção lógica do jogo (16:9)
+        const logicalWidth = 1920;
+        const logicalHeight = 1080;
+
+        // Calcula escala para caber na tela
+        let scale = Math.min(width / logicalWidth, height / logicalHeight);
+
+        // Zoom out extra: mostra mais cenário
+        scale *= 0.85;
+
+        // Aplica transformação de escala mantendo centralização
+        gameArea.style.transform = `scale(${scale})`;
+        gameArea.style.transformOrigin = 'top left';
+        gameArea.style.width = logicalWidth + 'px';
+        gameArea.style.height = logicalHeight + 'px';
+        gameArea.style.left = '50%';
+        gameArea.style.top = '50%';
+        gameArea.style.marginLeft = `-${(logicalWidth * scale) / 2}px`;
+        gameArea.style.marginTop = `-${(logicalHeight * scale) / 2}px`;
+        gameArea.style.position = 'absolute';
       }
-
-      // Atualiza o estilo visual (CSS)
-      gameArea.style.width = width + 'px';
-      gameArea.style.height = height + 'px';
-
-      // Opcional: atualizar dimensões internas do jogo (se usar canvas ou sistema de coordenadas fixas)
-      // Aqui você pode notificar o motor do jogo sobre nova resolução
-      // Ex: gameWorld.resize(logicalWidth, logicalHeight);
     }
 
     // Escuta mudanças de viewport (rotação, zoom, teclado, etc.)
@@ -1459,6 +1498,7 @@ if (isMobile()) {
 	      document.body.appendChild(btnCorrer);
     }
     function updateDisplay() {
+      if (!playerEl || !gameArea) return;
       // Centralização dinâmica (funciona com qualquer tamanho)
       playerEl.style.left = (player.x - playerEl.offsetWidth / 2) + 'px';
       playerEl.style.top = (player.y - playerEl.offsetHeight / 2) + 'px';
@@ -1631,84 +1671,98 @@ if (isMobile()) {
 }
 
     function movePredator() {
-      if (gameOver || winPhase || !predatorEl) {
+    if (gameOver || winPhase || !predatorEl) {
         animationId = requestAnimationFrame(movePredator);
         return;
-      }
+    }
 
-      const phase = getCurrentPhaseData();
-      const rect = gameArea.getBoundingClientRect();
-      const maxX = rect.width - 25;
-      const maxY = rect.height - 25;
+    const phase = getCurrentPhaseData();
+    const rect = gameArea.getBoundingClientRect();
+    const maxX = rect.width - 25;
+    const maxY = rect.height - 25;
+    let dx = 0, dy = 0;
 
-      let dx = 0, dy = 0;
-
-      if (isPlayerHidden) {
-        // === PATRULHA ALEATÓRIA ===
+    // === COMPORTAMENTO BASEADO EM isPlayerHidden ===
+    if (isPlayerHidden) {
+        // Jogador está escondido → PATRULHA ALEATÓRIA
         predator.patrolTimer++;
-        if (predator.patrolTimer > 120) {
-          predator.patrolDirection = {
-             dx: (Math.random() - 0.5) * 2,
-             dy: (Math.random() - 0.5) * 2
-          };
-          predator.patrolTimer = 0;
+        if (predator.patrolTimer > 60) { // muda direção a cada ~1s
+            predator.patrolDirection = {
+                dx: (Math.random() - 0.5) * 2,
+                dy: (Math.random() - 0.5) * 2
+            };
+            predator.patrolTimer = 0;
         }
         dx = predator.patrolDirection.dx * phase.predatorSpeed;
         dy = predator.patrolDirection.dy * phase.predatorSpeed;
-      } else {
-        // === PERSEGUIÇÃO INTELIGENTE COM EVITAÇÃO DE OBSTÁCULOS ===
+    } else {
+        // Jogador visível → PERSEGUIÇÃO ATIVA com contorno de obstáculos
         const toPlayerX = player.x - predator.x;
         const toPlayerY = player.y - predator.y;
         const dist = Math.sqrt(toPlayerX * toPlayerX + toPlayerY * toPlayerY);
 
         if (dist > 0) {
-          // Direção unitária em direção ao jogador
-          const unitDx = toPlayerX / dist;
-          const unitDy = toPlayerY / dist;
+            const unitDx = toPlayerX / dist;
+            const unitDy = toPlayerY / dist;
+            const desiredDx = unitDx * phase.predatorSpeed;
+            const desiredDy = unitDy * phase.predatorSpeed;
 
-          // Testa se o próximo passo (na direção do jogador) está livre
-          const nextX = predator.x + unitDx * phase.predatorSpeed;
-          const nextY = predator.y + unitDy * phase.predatorSpeed;
+            if (!isSolidAt(predator.x + desiredDx, predator.y + desiredDy)) {
+                dx = desiredDx;
+                dy = desiredDy;
+            } else {
+                // Contorna obstáculo
+                const result = findBestFreeDirectionAroundObstacle(
+                    desiredDx, desiredDy,
+                    phase.predatorSpeed,
+                    predator.x, predator.y
+                );
+                dx = result.dx;
+                dy = result.dy;
 
-          if (!isSolidAt(nextX, nextY)) {
-            // Caminho livre → segue normalmente
-            dx = unitDx * phase.predatorSpeed;
-            dy = unitDy * phase.predatorSpeed;
-          } else {
-            // Caminho bloqueado → recalcula direção alternativa
-            const result = findBestFreeDirection(unitDx * phase.predatorSpeed, unitDy * phase.predatorSpeed, phase.predatorSpeed);
-            dx = result.dx;
-            dy = result.dy;
-          }
+                // Se travado, força nova direção após 1s
+                if (dx === 0 && dy === 0) {
+                    predator.patrolTimer++;
+                    if (predator.patrolTimer >= 60) {
+                        predator.patrolTimer = 0;
+                        const jitterAngle = (Math.random() - 0.5) * Math.PI / 2;
+                        dx = Math.cos(jitterAngle) * phase.predatorSpeed;
+                        dy = Math.sin(jitterAngle) * phase.predatorSpeed;
+                        if (isSolidAt(predator.x + dx, predator.y + dy)) {
+                            dx = 0; dy = 0;
+                        }
+                    }
+                }
+            }
         }
-      }
+    }
 
-      // Atualiza direção horizontal do predador
-      if (dx < 0) predator.facing = 'left';
-      else if (dx > 0) predator.facing = 'right';
+    // Atualiza direção horizontal
+    if (dx < 0) predator.facing = 'left';
+    else if (dx > 0) predator.facing = 'right';
 
-      // Aplica o movimento
-      predator.x += dx;
-      predator.y += dy;
+    // Aplica movimento
+    predator.x += dx;
+    predator.y += dy;
 
-      // Limita aos limites da tela
-      predator.x = Math.max(25, Math.min(maxX, predator.x));
-      predator.y = Math.max(25, Math.min(maxY, predator.y));
+    // Limita aos limites da tela
+    predator.x = Math.max(25, Math.min(maxX, predator.x));
+    predator.y = Math.max(25, Math.min(maxY, predator.y));
 
-      // Verifica captura (só se jogador não estiver escondido)
-      if (!isPlayerHidden) {
+    // === CAPTURA SÓ OCORRE SE O JOGADOR NÃO ESTIVER EM HIDEOUT ===
+    if (!isPlayerHidden) {
         const distToPlayer = Math.sqrt(
-          Math.pow(player.x - predator.x, 2) + Math.pow(player.y - predator.y, 2)
+            Math.pow(player.x - predator.x, 2) + Math.pow(player.y - predator.y, 2)
         );
         if (distToPlayer < 40) {
-          perderVida();
-          return;
+            perderVida();
+            return;
         }
-      }
-
-      updateDisplay();
-      animationId = requestAnimationFrame(movePredator);
     }
+
+    updateDisplay();
+    animationId = requestAnimationFrame(movePredator);
+}
 
     function checkCollisions() {
       const phase = getCurrentPhaseData();
@@ -2256,6 +2310,49 @@ function isSolidAt(x, y) {
     }
   }
   return false;
+}
+
+// Encontra melhor direção livre *próxima à direção do jogador*, evitando obstáculos sólidos
+function findBestFreeDirectionAroundObstacle(targetDx, targetDy, speed, px, py) {
+    // 1. Testa direção exata primeiro (já feito fora, mas repetimos aqui para segurança)
+    if (!isSolidAt(px + targetDx, py + targetDy)) {
+        return { dx: targetDx, dy: targetDy };
+    }
+
+    // 2. Gera candidatos: 8 direções ao redor (±45°, ±90°, ±135°, 180°)
+    const angles = [
+        0, Math.PI/4, Math.PI/2, 3*Math.PI/4,
+        Math.PI, -3*Math.PI/4, -Math.PI/2, -Math.PI/4
+    ];
+
+    // Prioriza direções que ainda apontam *na direção geral do jogador*
+    const baseAngle = Math.atan2(targetDy, targetDx);
+    angles.sort((a, b) => {
+        const diffA = Math.abs(((a - baseAngle) + Math.PI) % (2 * Math.PI) - Math.PI);
+        const diffB = Math.abs(((b - baseAngle) + Math.PI) % (2 * Math.PI) - Math.PI);
+        return diffA - diffB; // menor diferença primeiro
+    });
+
+    for (const angle of angles) {
+        const dx = Math.cos(angle) * speed;
+        const dy = Math.sin(angle) * speed;
+        if (!isSolidAt(px + dx, py + dy)) {
+            return { dx, dy };
+        }
+    }
+
+    // 3. Último recurso: tenta qualquer direção (360° em 12 passos)
+    for (let i = 0; i < 12; i++) {
+        const angle = (i / 12) * Math.PI * 2;
+        const dx = Math.cos(angle) * speed;
+        const dy = Math.sin(angle) * speed;
+        if (!isSolidAt(px + dx, py + dy)) {
+            return { dx, dy };
+        }
+    }
+
+    // Nenhuma saída → não se move (evita empurrar contra parede)
+    return { dx: 0, dy: 0 };
 }
 
 // Nova função: encontra a melhor direção livre próxima à direção desejada
